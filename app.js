@@ -8,12 +8,9 @@ const enderecoUsuario = {
   uf: document.querySelector("#uf"),
   cep: "06401134",
 };
-
 async function consultaCEP(cep) {
   const url = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
-
   const resposta = await url.json();
-
   let cepUsuario = {
     logradouro: resposta.logradouro,
     bairro: resposta.bairro,
@@ -21,7 +18,6 @@ async function consultaCEP(cep) {
     estado: resposta.estado,
     uf: resposta.uf,
     regiao: resposta.regiao,
-    
   };
   enderecoUsuario.rua.innerText = cepUsuario.logradouro;
   enderecoUsuario.bairro.innerText = cepUsuario.bairro;
@@ -31,5 +27,4 @@ async function consultaCEP(cep) {
   enderecoUsuario.regiao.innerText = cepUsuario.regiao;
   console.log(cepUsuario);
 }
-
 consultaCEP(enderecoUsuario.cep);
